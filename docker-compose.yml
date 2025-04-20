@@ -19,19 +19,6 @@ services:
       - TZ=${TZ}
     restart: ${RESTART_POLICY}
 
-  homepage:
-    user: "1000:1000"
-    image: ghcr.io/benphelps/homepage:latest
-    container_name: ${CONTAINER_PREFIX}homepage
-    environment:
-      - TZ=${TZ}
-    volumes:
-      - ${CONFIG_PATH}/homepage:/app/config
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-    ports:
-      - "3001:3000"
-    restart: ${RESTART_POLICY}
-
   watchtower:
     image: containrrr/watchtower
     container_name: ${CONTAINER_PREFIX}watchtower
